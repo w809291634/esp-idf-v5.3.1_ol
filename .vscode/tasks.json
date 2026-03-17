@@ -1,0 +1,55 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+//reconfigure
+{"type": "shell","label": "reconfigure","command": "idf_cmd_init.bat && idf_build.bat reconfigure",
+"args": [],"options": {"cwd": "${workspaceFolder}"},"group": "build",},
+//build
+{"type": "shell","label": "idf_build","command": "idf_cmd_init.bat && idf_build.bat build",
+"args": [],"options": {"cwd": "${workspaceFolder}"},"group": "build",},
+//flash
+{"type": "shell","label": "flash","command": "idf_cmd_init.bat && idf_build.bat flash",
+"args": [],"options": {"cwd": "${workspaceFolder}"},"group": "build",},
+//app-flash
+{"type": "shell","label": "app_flash","command": "idf_cmd_init.bat && idf_build.bat app_flash",
+"args": [],"options": {"cwd": "${workspaceFolder}"},"group": "build",},
+//monitor
+{"type": "shell","label": "monitor","command": "idf_cmd_init.bat && idf_build.bat monitor",
+"args": [],"options": {"cwd": "${workspaceFolder}"},"group": "build",},
+//flash_monitor
+{"type": "shell","label": "flash_monitor","command": "idf_cmd_init.bat && idf_build.bat flash_monitor",
+"args": [],"options": {"cwd": "${workspaceFolder}"},"group": "build",},
+//app_flash_monitor
+// {"type": "shell","label": "app_flash_monitor","command": "idf_cmd_init.bat && idf_build.bat app_flash_monitor",
+// "args": [],"options": {"cwd": "${workspaceFolder}"},"group": "build",},
+//menuconfig
+{"type": "shell","label": "menuconfig","command": "start",
+"args": ["cmd.exe","/K",
+"call \"${workspaceFolder}\\idf_cmd_init.bat\" && call \"${workspaceFolder}\\idf_build.bat\" menuconfig"],
+"options": {"cwd": "${workspaceFolder}"},"group": "build",},
+//clean
+// {"type": "shell","label": "clean","command": "idf_cmd_init.bat && idf_build.bat clean",
+// "args": [],"options": {"cwd": "${workspaceFolder}"},"group": "build",},
+//fullclean
+{"type": "shell","label": "fullclean","command": "idf_cmd_init.bat && idf_build.bat fullclean",
+"args": [],"options": {"cwd": "${workspaceFolder}"},"group": "build",},
+//size
+{"type": "shell","label": "size","command": "idf_cmd_init.bat && idf_build.bat size",
+"args": [],"options": {"cwd": "${workspaceFolder}"},"group": "build",},
+//size-components
+{"type": "shell","label": "size-components","command": "idf_cmd_init.bat && idf_build.bat size-components",
+"args": [],"options": {"cwd": "${workspaceFolder}"},"group": "build",},
+//size-files
+{"type": "shell","label": "size-files","command": "idf_cmd_init.bat && idf_build.bat size-files",
+"args": [],"options": {"cwd": "${workspaceFolder}"},"group": "build",},
+//partition-table
+{"type": "shell","label": "partition-table","command": "idf_cmd_init.bat && idf_build.bat partition-table",
+"args": [],"options": {"cwd": "${workspaceFolder}"},"group": "build",},
+//set-target esp32
+// {"type": "shell","label": "set-target esp32","command": "idf_cmd_init.bat && idf_build.bat set-target esp32",
+// "args": [],"options": {"cwd": "${workspaceFolder}"},"group": "build",},
+//set-target esp32s3
+{"type": "shell","label": "set-target esp32s3","command": "idf_cmd_init.bat && idf_build.bat set-target esp32s3",
+"args": [],"options": {"cwd": "${workspaceFolder}"},"group": "build",},
+    ]
+  }

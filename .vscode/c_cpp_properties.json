@@ -1,0 +1,31 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/examples/idf_v541_my_exps/Template/base_template/main/include",
+
+                // SmartCar_wifi_gamepad
+                // "${workspaceFolder}/examples\\idf_v541_my_exps\\SmartCar_wifi_gamepad\\build\\config",
+                // "${workspaceFolder}/examples\\idf_v541_my_exps\\SmartCar_wifi_gamepad\\main\\include",
+                // "${workspaceFolder}/examples\\idf_v541_my_exps\\SmartCar_wifi_gamepad\\components\\board_config",
+
+                // SmartCar_wifi_camera
+                "${workspaceFolder}/examples\\idf_v541_my_exps\\SmartCar_wifi_camera\\build\\config",
+                "${workspaceFolder}/examples\\idf_v541_my_exps\\SmartCar_wifi_camera\\main\\include",
+                "${workspaceFolder}/examples\\idf_v541_my_exps\\SmartCar_wifi_camera\\components\\board_config",
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "compilerPath": "D:\\Program_Files\\AiThinkerIDE_V1.5.2\\msys32\\usr\\bin\\gcc.exe",
+            "cStandard": "c11",
+            "cppStandard": "gnu++14",
+            "intelliSenseMode": "linux-gcc-x86"
+        }
+    ],
+    "version": 4
+}
