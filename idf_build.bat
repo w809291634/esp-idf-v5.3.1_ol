@@ -2,7 +2,7 @@
 
 ::::::::: 配置 :::::::::
 :: 设置你的ESP-IDF项目根目录（或作为参数传入）,不能有空格
-set PROJECT_PATH=D:\esp32_8266_files\esp-idf-v5.3.1\examples\Device_Ctrl_YJT
+set PROJECT_PATH=D:\esp32_8266_files\esp-idf-v5.3.1_ol\examples\yjt_HL0_V3\Device_Ctrl_YJT
 :: 默认串口号和波特率
 @REM set DEFAULT_COM=COM8
 set DEFAULT_COM=COM7

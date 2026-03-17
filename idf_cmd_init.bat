@@ -8,7 +8,7 @@
 :: 2. try to use environment variable IDF_PATH to query configuration managed by idf-env
 :: 3. try to use local working directory to query configuration managed by idf-env
 ::::::::: 配置 :::::::::
-set IDF_PATH=D:\esp32_8266_files\esp-idf-v5.3.1
+set IDF_PATH=D:\esp32_8266_files\esp-idf-v5.3.1_ol
 
 set IDF_TOOLS_PATH=D:\esp32_8266_files\esp-idf-tools_for_idf_v5_3_1
 set IDF_PYTHON=%IDF_TOOLS_PATH%\tools\idf-python\3.11.2\python.exe
