@@ -5,7 +5,7 @@
 set PROJECT_PATH=D:\esp32_8266_files\esp-idf-v5.3.1_ol\examples\yjt_HL0_V3\Device_Ctrl_YJT
 :: 默认串口号和波特率
 @REM set DEFAULT_COM=COM8
-set DEFAULT_COM=COM7
+set DEFAULT_COM=COM3
 set DEFAULT_FBPS=460800
 set DEFAULT_FBPS=2000000
 @REM set DEFAULT_FBPS=20000000
@@ -82,6 +82,13 @@ if /i "%~1"=="build" (
     ) else (
         call :app_flash_monitor %~2 %DEFAULT_FBPS% %DEFAULT_MBPS%
     )
+) else if /i "%~1"=="erase" (
+    if "%~2"=="" (
+        echo Using default port: %DEFAULT_COM%
+        call :erase %DEFAULT_COM%
+    ) else (
+        call :erase %~2
+    )
 ) else (
     echo Invalid command: %~1
     call :usage
@@ -109,6 +116,7 @@ exit /b 0
     echo   flash [port]  ^<-- Flash firmware with optional port, using default baud rate if not provided^>
     echo   monitor [port]  ^<-- Monitor serial output with optional port, using default baud rate if not provided^>
     echo   flash_monitor [port]  ^<-- Flash and then monitor with optional port, using default baud rates if not provided^>
+    echo   erase [port]     ^<-- Erase entire flash chip, using default port if not provided^>
     exit /b
 
 :usage_set_target
@@ -197,4 +205,9 @@ exit /b 0
     idf.py -C "%PROJECT_PATH%" app-flash -p %~1 -b %~2
     echo Starting monitor at baud rate: %~3
     idf.py -C "%PROJECT_PATH%" monitor -p %~1 -b %~3
+    exit /b 0
+
+:erase
+    echo Erasing entire flash on port: %~1
+    idf.py -C "%PROJECT_PATH%" erase-flash -p %~1
     exit /b 0

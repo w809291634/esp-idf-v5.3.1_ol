@@ -10,6 +10,9 @@
 //flash
 {"type": "shell","label": "flash","command": "idf_cmd_init.bat && idf_build.bat flash",
 "args": [],"options": {"cwd": "${workspaceFolder}"},"group": "build",},
+//erase
+{"type": "shell","label": "erase","command": "idf_cmd_init.bat && idf_build.bat erase",
+"args": [],"options": {"cwd": "${workspaceFolder}"},"group": "build",},
 //app-flash
 {"type": "shell","label": "app_flash","command": "idf_cmd_init.bat && idf_build.bat app_flash",
 "args": [],"options": {"cwd": "${workspaceFolder}"},"group": "build",},
