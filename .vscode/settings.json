@@ -118,6 +118,8 @@
     "terminal.integrated.scrollback": 10000,
     "editor.renderControlCharacters": true,                 //  显示空格 
     "editor.renderWhitespace": "all",
+    "editor.tabSize": 4,
+    "editor.detectIndentation":false,
 
     // git 管理
     "git.autoRepositoryDetection": true,
