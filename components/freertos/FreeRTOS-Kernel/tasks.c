@@ -437,6 +437,7 @@ typedef struct tskTaskControlBlock       /* The old naming convention is used to
 
     #if ( configGENERATE_RUN_TIME_STATS == 1 )
         configRUN_TIME_COUNTER_TYPE ulRunTimeCounter; /*< Stores the amount of time the task has spent in the Running state. */
+        float cpuUsagePercent;
     #endif
 
     #if ( ( configUSE_NEWLIB_REENTRANT == 1 ) || ( configUSE_C_RUNTIME_TLS_SUPPORT == 1 ) )
@@ -460,6 +461,10 @@ typedef struct tskTaskControlBlock       /* The old naming convention is used to
 
     #if ( configUSE_POSIX_ERRNO == 1 )
         int iTaskErrno;
+    #endif
+
+    #if( portSTACK_GROWTH <= 0)
+        UBaseType_t     uxSizeOfStack;      /*< Support For CmBacktrace >*/
     #endif
 } tskTCB;
 
@@ -1034,6 +1039,7 @@ static void prvInitialiseNewTask( TaskFunction_t pxTaskCode,
         /* Check the alignment of the calculated top of stack is correct. */
         configASSERT( ( ( ( portPOINTER_SIZE_TYPE ) pxTopOfStack & ( portPOINTER_SIZE_TYPE ) portBYTE_ALIGNMENT_MASK ) == 0UL ) );
 
+        pxNewTCB->uxSizeOfStack = ulStackDepth;   /*< Support For CmBacktrace >*/
         #if ( configRECORD_STACK_HIGH_ADDRESS == 1 )
         {
             /* Also record the stack's high address, which may assist
@@ -6469,3 +6475,26 @@ static void prvAddCurrentTaskToDelayedList( TickType_t xTicksToWait,
     #endif
 
 #endif /* if ( configINCLUDE_FREERTOS_TASK_C_ADDITIONS_H == 1 ) */
+
+/*--------------------------User Function ---------------------------------*/
+uint32_t vTaskGetStackSize(TaskHandle_t TaskHandle)
+{
+    return TaskHandle->uxSizeOfStack;
+}
+
+#if ( configGENERATE_RUN_TIME_STATS == 1 )
+    void vTaskResetRunTimeCounter(TaskHandle_t TaskHandle)
+    {
+        TaskHandle->ulRunTimeCounter = 0;
+    }
+    
+    float vTaskGetCpuUsagePercent(TaskHandle_t TaskHandle)
+    {
+        return TaskHandle->cpuUsagePercent;
+    }
+    
+    void vTaskSetCpuUsagePercent(TaskHandle_t TaskHandle,float CpuUsagePercent)
+    {
+        TaskHandle->cpuUsagePercent = CpuUsagePercent;
+    }
+#endif

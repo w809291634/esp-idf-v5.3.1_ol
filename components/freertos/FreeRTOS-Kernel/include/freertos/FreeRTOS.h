@@ -1312,6 +1312,7 @@ typedef struct xSTATIC_TCB
     #endif
     #if ( configGENERATE_RUN_TIME_STATS == 1 )
         configRUN_TIME_COUNTER_TYPE ulDummy16;
+        float cpuUsagePercent;
     #endif
     #if ( ( configUSE_NEWLIB_REENTRANT == 1 ) || ( configUSE_C_RUNTIME_TLS_SUPPORT == 1 ) )
         configTLS_BLOCK_TYPE xDummy17;
@@ -1330,6 +1331,10 @@ typedef struct xSTATIC_TCB
     #if ( configUSE_POSIX_ERRNO == 1 )
         int iDummy22;
     #endif
+
+    #if(portSTACK_GROWTH <= 0)
+       UBaseType_t     uxSizeOfStack;      /*< Support For CmBacktrace >*/
+    #endif /* ( portSTACK_GROWTH > 0 )*/
 } StaticTask_t;
 
 /*
