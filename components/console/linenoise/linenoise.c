@@ -900,7 +900,11 @@ static int linenoiseEdit(char *buf, size_t buflen, const char *prompt)
         nread = read(in_fd, &c, 1);
         if (nread <= 0) return l.len;
 
-        if ( (getMillis() - t1) < LINENOISE_PASTE_KEY_DELAY && c != ENTER) {
+        /* 粘贴快速通道只接受可见字符（0x20~0x7E）。否则按住退格/方向键等
+         * 控制键时，自动重复使字节间隔 < PASTE_KEY_DELAY，会被误判为粘贴而
+         * 把控制字节当普通字符插入（表现为按住退格不删除反而冒乱码）。
+         * 控制键一律落到下面的 switch 正常处理。 */
+        if ( (getMillis() - t1) < LINENOISE_PASTE_KEY_DELAY && c >= 0x20 && c < 0x7f) {
             /* Pasting data, insert characters without formatting.
              * This can only be performed when the cursor is at the end of the
              * line. */
